@@ -1,0 +1,27 @@
+﻿@page
+@model Proyecto1.Pages.MovieDetailModel
+@{
+}
+
+<h3>@Model.MovieDetail.Name</h3>
+
+<div>
+    <span>Duration:</span>
+    <span>@Model.MovieDetail.Minutes</span><span> mins.</span>
+</div>
+<div>
+    <span>Category:</span>
+    <span>@Model.MovieDetail.Category</span>
+</div>
+@if (!string.IsNullOrEmpty(Model.MovieDetail.Review))
+{
+    <div>
+        <span>Review</span>
+        <span>@Model.MovieDetail.Review</span>
+    </div>
+}
+
+<form method="post" asp-page-handler="delete" asp-route-code="@Model.MovieDetail.Code"
+    onsubmit="return confirm('Are you sure to delete this movie?')">
+    <button type="submit" class="btn btn-danger">Delete Movie</button>
+</form>
